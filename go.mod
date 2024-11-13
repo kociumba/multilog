@@ -1,6 +1,6 @@
 module github.com/kociumba/multilog
 
-go 1.23.0
+go 1.20
 
 require github.com/charmbracelet/log v0.4.0
 

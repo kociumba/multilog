@@ -22,4 +22,3 @@ go.work
 
 # misc
 Taskfile.yml
-multilog_test.go

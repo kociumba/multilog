@@ -30,7 +30,7 @@ import (
 
 // NewMulti returns a new logger using the default options.
 func NewMulti(writers ...io.Writer) *log.Logger {
-	w := newMultiWriter(writers...)
+	w := multiwriter.NewMultiWriter(writers...)
 
 	return log.New(w)
 }
@@ -39,14 +39,7 @@ func NewMulti(writers ...io.Writer) *log.Logger {
 //
 // The writers need to be passed in as the last parameter because of go's limitations around variadic arguments.
 func NewMultiWithOptions(o log.Options, writers ...io.Writer) *log.Logger {
-	w := newMultiWriter(writers...)
+	w := multiwriter.NewMultiWriter(writers...)
 
 	return log.NewWithOptions(w, o)
-}
-
-// package implementation
-
-// HELPER: just initializes and allocates a new MultiWriter
-func newMultiWriter(w ...io.Writer) io.Writer {
-	return &multiwriter.MultiWriter{Writers: w}
 }
